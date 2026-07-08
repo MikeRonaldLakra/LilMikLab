@@ -8,17 +8,21 @@ import Loader from "@/components/Loader";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import AuroraBackground from "@/components/AuroraBackground";
+import Vignette from "@/components/Vignette";
 import Hero from "@/components/sections/Hero";
 import ReliabilityCrisis from "@/components/sections/ReliabilityCrisis";
 import Benchmarks from "@/components/sections/Benchmarks";
 import ModuleDivider from "@/components/sections/ModuleDivider";
 import CapabilitiesList from "@/components/sections/CapabilitiesList";
 import JudgeNode from "@/components/sections/JudgeNode";
+import InteractiveTerminal from "@/components/sections/InteractiveTerminal";
 import FidelityChart from "@/components/sections/FidelityChart";
+import LiveMetrics from "@/components/sections/LiveMetrics";
 import Diversity from "@/components/sections/Diversity";
 import Pillars from "@/components/sections/Pillars";
 import ComparisonTable from "@/components/sections/ComparisonTable";
 import Founder from "@/components/sections/Founder";
+import FinalCTA from "@/components/sections/FinalCTA";
 
 // The R3F canvas touches window/WebGL — keep it out of the server bundle.
 const SwarmCanvas = dynamic(() => import("@/components/SwarmCanvas"), {
@@ -37,6 +41,7 @@ export default function Home() {
 
       {/* Persistent 3D swarm background, visible through the whole scroll */}
       <SwarmCanvas fixed />
+      <Vignette />
 
       <div className="relative">
         <AuroraBackground />
@@ -52,11 +57,14 @@ export default function Home() {
           />
           <CapabilitiesList />
           <JudgeNode />
+          <InteractiveTerminal />
           <FidelityChart />
+          <LiveMetrics />
           <Diversity />
           <Pillars />
           <ComparisonTable />
           <Founder />
+          <FinalCTA />
           <Footer />
         </div>
       </div>
