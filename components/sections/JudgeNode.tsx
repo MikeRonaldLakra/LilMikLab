@@ -1,96 +1,178 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const points = [
-  {
-    title: "Decentralized Reasoning",
-    body: "No single model controls the final output vector.",
+type NodeKey = "claude" | "gpt" | "gemini" | "judge" | "synthesis";
+
+const nodes: Record<
+  NodeKey,
+  { label: string; color: string; description: string }
+> = {
+  claude: {
+    label: "Claude",
+    color: "#F472B6",
+    description:
+      "Linguistic Context — deep reasoning and nuanced language understanding.",
   },
-  {
-    title: "Stochastic Analysis",
-    body: "Mathematical weighing of semantic agreement clusters.",
+  gpt: {
+    label: "GPT-4o",
+    color: "#22D3EE",
+    description:
+      "Reasoning Core — broad general knowledge and structured logical inference.",
   },
-  {
-    title: "Dynamic Routing",
-    body: "Low-latency inference via Groq-optimized hardware arrays.",
+  gemini: {
+    label: "Gemini",
+    color: "#FBBF24",
+    description:
+      "Semantic Breadth — long-context retrieval and multimodal grounding.",
   },
-  {
-    title: "Adaptive Triage",
-    body: "Complexity analysis directs queries to specific neural clusters.",
+  judge: {
+    label: "Judge",
+    color: "#B794FF",
+    description:
+      "Decentralized reasoning, stochastic agreement analysis, dynamic Groq-routed inference, and adaptive complexity triage — all in one node.",
   },
-];
+  synthesis: {
+    label: "Synthesis",
+    color: "#A3E635",
+    description:
+      "The final, single answer — surgically stitched from the strongest passages of all three drafts.",
+  },
+};
+
+const positions: Record<NodeKey, { x: number; y: number }> = {
+  claude: { x: 60, y: 50 },
+  gpt: { x: 240, y: 50 },
+  gemini: { x: 150, y: 50 },
+  judge: { x: 150, y: 160 },
+  synthesis: { x: 150, y: 250 },
+};
 
 export default function JudgeNode() {
+  const [selected, setSelected] = useState<NodeKey>("judge");
+
+  const connectorsToJudge: NodeKey[] = ["claude", "gpt", "gemini"];
+
   return (
     <section id="judge-node" className="relative px-6 py-32 sm:py-40">
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 lg:grid-cols-2">
         <div>
-          <span className="module-band coord-label mb-6 inline-block">
-            Architecture
+          <span className="module-band coord-label mb-6 inline-flex">
+            Interactive Architecture
           </span>
-          <h2 className="mb-10 font-display text-4xl font-medium tracking-tight sm:text-5xl">
+          <h2 className="mb-6 font-display text-4xl font-medium tracking-tight sm:text-5xl">
             The <span className="text-gradient-swarm">Judge Node</span>
           </h2>
+          <p className="mb-8 max-w-md font-body text-white/50">
+            Click any node to see what it contributes to the final answer.
+          </p>
 
-          <ul className="flex flex-col gap-6">
-            {points.map((point, i) => (
-              <motion.li
-                key={point.title}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="border-l-2 border-swarm-core/50 pl-5"
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={selected}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.35 }}
+              className="glass rounded-2xl border-l-2 p-6"
+              style={{ borderLeftColor: nodes[selected].color }}
+            >
+              <span
+                className="font-display text-lg font-medium"
+                style={{ color: nodes[selected].color }}
               >
-                <span className="font-body text-base font-semibold text-white">
-                  {point.title}:
-                </span>{" "}
-                <span className="font-body text-base text-white/60">
-                  {point.body}
-                </span>
-              </motion.li>
-            ))}
-          </ul>
+                {nodes[selected].label}
+              </span>
+              <p className="mt-2 font-body text-white/60">
+                {nodes[selected].description}
+              </p>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.92 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="glass relative flex aspect-square items-center justify-center overflow-hidden rounded-3xl"
-        >
-          <svg viewBox="0 0 300 300" className="h-3/4 w-3/4" aria-hidden="true">
-            {/* Three worker nodes feeding into one judge node */}
-            {[
-              { pos: [60, 60], color: "#22D3EE" },
-              { pos: [240, 60], color: "#F472B6" },
-              { pos: [150, 60], color: "#FBBF24" },
-            ].map(({ pos: [x, y], color }, i) => (
-              <g key={i}>
-                <line
-                  x1={x}
-                  y1={y}
-                  x2={150}
-                  y2={220}
-                  stroke={color}
-                  strokeOpacity={0.35}
-                  strokeWidth={1.5}
-                />
-                <circle cx={x} cy={y} r={10} fill="#161619" stroke={color} strokeWidth={1.5} />
-              </g>
+        <div className="glass relative flex aspect-square items-center justify-center overflow-hidden rounded-3xl">
+          <svg viewBox="0 0 300 300" className="h-[85%] w-[85%]" aria-hidden="true">
+            <defs>
+              {(Object.keys(nodes) as NodeKey[]).map((key) => (
+                <filter key={key} id={`glow-${key}`}>
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              ))}
+            </defs>
+
+            {/* Animated data-flow connectors: worker nodes -> Judge */}
+            {connectorsToJudge.map((key) => (
+              <line
+                key={key}
+                x1={positions[key].x}
+                y1={positions[key].y}
+                x2={positions.judge.x}
+                y2={positions.judge.y}
+                stroke={nodes[key].color}
+                strokeOpacity={0.4}
+                strokeWidth={1.5}
+                strokeDasharray="6 6"
+                className="animate-flow"
+              />
             ))}
-            <circle
-              cx={150}
-              cy={220}
-              r={18}
-              fill="#8B5CF6"
-              className="animate-pulse"
+
+            {/* Judge -> Synthesis */}
+            <line
+              x1={positions.judge.x}
+              y1={positions.judge.y}
+              x2={positions.synthesis.x}
+              y2={positions.synthesis.y}
+              stroke={nodes.judge.color}
+              strokeOpacity={0.5}
+              strokeWidth={2}
+              strokeDasharray="6 6"
+              className="animate-flow"
             />
-            <circle cx={150} cy={220} r={30} fill="none" stroke="#B794FF" strokeOpacity={0.4} />
+
+            {(Object.keys(nodes) as NodeKey[]).map((key) => {
+              const isJudge = key === "judge";
+              const isSynthesis = key === "synthesis";
+              const r = isJudge ? 20 : isSynthesis ? 16 : 13;
+              const isSelected = selected === key;
+              return (
+                <g
+                  key={key}
+                  onClick={() => setSelected(key)}
+                  data-cursor="Click"
+                  className="cursor-pointer"
+                  style={{ cursor: "pointer" }}
+                >
+                  <circle
+                    cx={positions[key].x}
+                    cy={positions[key].y}
+                    r={r + (isSelected ? 4 : 0)}
+                    fill={isJudge || isSynthesis ? nodes[key].color : "#161619"}
+                    stroke={nodes[key].color}
+                    strokeWidth={isSelected ? 2.5 : 1.5}
+                    filter={`url(#glow-${key})`}
+                    className="transition-all duration-300"
+                  />
+                  <text
+                    x={positions[key].x}
+                    y={positions[key].y + r + 16}
+                    textAnchor="middle"
+                    fill={isSelected ? nodes[key].color : "rgba(255,255,255,0.5)"}
+                    fontSize="9"
+                    fontFamily="var(--font-mono)"
+                    className="uppercase tracking-widest"
+                  >
+                    {nodes[key].label}
+                  </text>
+                </g>
+              );
+            })}
           </svg>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
