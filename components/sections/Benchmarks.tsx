@@ -11,7 +11,7 @@ const rows = [
 
 export default function Benchmarks() {
   return (
-    <section className="relative px-6 py-32 sm:py-40">
+    <section id="benchmarks" className="relative px-6 py-32 sm:py-40">
       <div className="mx-auto max-w-5xl">
         <motion.h2
           initial={{ opacity: 0, y: 24 }}
