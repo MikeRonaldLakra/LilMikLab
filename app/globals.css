@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --font-display: "Space Grotesk", sans-serif;
@@ -20,13 +22,6 @@ body {
   color: #ffffff;
   font-family: var(--font-body);
   overflow-x: hidden;
-}
-
-/* FIX: Hide default cursor on desktop because you have a Custom Cursor Component */
-@media (pointer: fine) {
-  body, a, button, [role="button"] {
-    cursor: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -118,87 +113,39 @@ button:focus-visible {
   transform-origin: left;
 }
 
-/* ---- Reusable module divider band ---- */
+/* ---- Section label — flat hairline style, not a rounded pill.
+   Every section using .module-band updates automatically. ---- */
 .module-band {
-  display: inline-block;
-  padding: 0.4rem 1.5rem;
-  border-radius: 999px;
-  background: rgba(139, 92, 246, 0.18);
-  border: 1px solid rgba(139, 92, 246, 0.35);
-}
-
-/* ---- Infinite marquee ---- */
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-25%);
-  }
-}
-
-.animate-marquee {
-  animation: marquee linear infinite;
-}
-
-/* ---- RGB-split glitch heading ---- */
-.glitch-text {
-  position: relative;
-  display: inline-block;
-}
-
-.glitch-text::before,
-.glitch-text::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: inherit;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  opacity: 0;
-}
-
-.glitch-text::before {
-  color: #22d3ee;
-  -webkit-text-fill-color: #22d3ee;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(183, 148, 255, 0.35);
+  border-radius: 0;
   background: none;
-  animation: glitch-flicker 6s steps(1) infinite;
 }
 
-.glitch-text::after {
-  color: #f472b6;
-  -webkit-text-fill-color: #f472b6;
-  background: none;
-  animation: glitch-flicker 6s steps(1) infinite reverse;
+.module-band::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #b794ff;
 }
 
-@keyframes glitch-flicker {
-  0%,
-  92%,
-  100% {
-    opacity: 0;
-    transform: translate(0, 0);
+/* Cursor-none on desktop so the custom CursorTag fully takes over */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
   }
-  93% {
-    opacity: 0.7;
-    transform: translate(-3px, 1px);
-    clip-path: inset(10% 0 60% 0);
+  a,
+  button {
+    cursor: none;
   }
-  94% {
-    opacity: 0.5;
-    transform: translate(3px, -1px);
-    clip-path: inset(50% 0 20% 0);
-  }
-  95% {
-    opacity: 0.7;
-    transform: translate(-2px, 0);
-    clip-path: inset(30% 0 40% 0);
-  }
-  96% {
-    opacity: 0;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .cursor-tag-root {
+    display: none;
   }
 }
