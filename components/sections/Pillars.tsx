@@ -1,27 +1,31 @@
 "use client";
 
 import { motion } from "framer-motion";
+import TiltCard from "@/components/TiltCard";
 
 const pillars = [
   {
     icon: "cpu",
+    color: "#22D3EE",
     title: "Hardware Optimized",
     body: "Proprietary Llama synthesis served over specialized Groq arrays for sub-second consensus latency.",
   },
   {
     icon: "check",
+    color: "#A3E635",
     title: "Verified Paths",
     body: "Automated code sandbox testing with real-time logical repair and validation cycles.",
   },
   {
     icon: "shield",
+    color: "#F472B6",
     title: "Hallucination Resistant",
     body: "Cross-model disagreement acts as a semantic firewall, preventing unverified data injection.",
   },
 ];
 
-function PillarIcon({ name }: { name: string }) {
-  const common = { width: 28, height: 28, stroke: "#B794FF", strokeWidth: 1.6, fill: "none" };
+function PillarIcon({ name, color }: { name: string; color: string }) {
+  const common = { width: 28, height: 28, stroke: color, strokeWidth: 1.6, fill: "none" };
   if (name === "cpu") {
     return (
       <svg viewBox="0 0 24 24" {...common}>
@@ -62,17 +66,25 @@ export default function Pillars() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
-              className="glass glass-hover flex flex-col items-center rounded-2xl p-8 text-center"
+              className="rounded-2xl"
             >
-              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-swarm-ghost">
-                <PillarIcon name={pillar.icon} />
-              </div>
-              <h3 className="font-display text-lg font-medium text-gradient-swarm">
-                {pillar.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-white/55">
-                {pillar.body}
-              </p>
+              <TiltCard className="glass glass-hover flex h-full flex-col items-center rounded-2xl p-8 text-center">
+                <div
+                  className="mb-5 flex h-14 w-14 items-center justify-center rounded-full"
+                  style={{ backgroundColor: `${pillar.color}22` }}
+                >
+                  <PillarIcon name={pillar.icon} color={pillar.color} />
+                </div>
+                <h3
+                  className="font-display text-lg font-medium"
+                  style={{ color: pillar.color }}
+                >
+                  {pillar.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-white/55">
+                  {pillar.body}
+                </p>
+              </TiltCard>
             </motion.div>
           ))}
         </div>
