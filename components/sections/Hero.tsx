@@ -1,24 +1,22 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Marquee from "@/components/Marquee";
-import MagneticButton from "@/components/MagneticButton";
 
-const headline = ["Architecting the", "Future of", "Intelligence."];
+// Dogstudio's signature move: headline letters spaced out and revealed one
+// by one, rather than a simple line fade — reads as kinetic typography.
+const HEADLINE = "Architecting the Future of Intelligence";
 
 const container = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.05, delayChildren: 0.15 } },
+  visible: { transition: { staggerChildren: 0.018, delayChildren: 0.3 } },
 };
 
-// Letter-by-letter drop-in — heavier and busier than a simple line-fade.
-const letter = {
-  hidden: { y: "120%", opacity: 0, rotate: 6 },
+const char = {
+  hidden: { opacity: 0, y: 24 },
   visible: {
-    y: "0%",
     opacity: 1,
-    rotate: 0,
-    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+    y: 0,
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -28,42 +26,37 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-radial-fade" />
 
       <motion.span
-        initial={{ opacity: 0, y: -8 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="module-band coord-label relative z-10 mb-6"
+        className="relative z-10 mb-8 font-mono text-xs uppercase tracking-[0.35em] text-white/40"
       >
         Proprietary Architecture Briefing
       </motion.span>
 
-      <h1 className="relative z-10 font-display text-5xl font-medium leading-[1.05] tracking-tight sm:text-7xl md:text-8xl">
-        {headline.map((line, li) => (
+      <motion.h1
+        variants={container}
+        initial="hidden"
+        animate="visible"
+        className="relative z-10 max-w-6xl font-display text-3xl font-medium leading-[1.3] tracking-[0.05em] sm:text-5xl md:text-6xl"
+        aria-label={HEADLINE}
+      >
+        {HEADLINE.split("").map((c, i) => (
           <motion.span
-            key={line}
-            variants={container}
-            initial="hidden"
-            animate="visible"
-            transition={{ delayChildren: 0.15 + li * 0.25 }}
-            className="block overflow-hidden py-1"
+            key={i}
+            variants={char}
+            className={`inline-block ${c === " " ? "w-3 sm:w-5" : "text-gradient-swarm"}`}
           >
-            {line.split("").map((char, ci) => (
-              <motion.span
-                key={ci}
-                variants={letter}
-                className="inline-block text-gradient-swarm"
-              >
-                {char === " " ? "\u00A0" : char}
-              </motion.span>
-            ))}
+            {c === " " ? "\u00A0" : c}
           </motion.span>
         ))}
-      </h1>
+      </motion.h1>
 
       <motion.p
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-10 mt-8 max-w-xl text-balance font-body text-lg text-white/60"
+        transition={{ duration: 0.8, delay: 1.6, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-10 mt-10 max-w-xl text-balance font-body text-lg text-white/60"
       >
         NexusForge — Swarm AI Engine
       </motion.p>
@@ -71,36 +64,38 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.3, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.8, delay: 1.8, ease: [0.16, 1, 0.3, 1] }}
         className="relative z-10 mt-10 flex flex-col items-center gap-4 sm:flex-row"
       >
-        <MagneticButton
-          href="#features"
-          className="inline-block rounded-full bg-gradient-to-r from-swarm-core to-aurora-cyan px-8 py-3 font-body text-sm font-medium text-void shadow-[0_0_40px_-8px_rgba(139,92,246,0.8)]"
+        <a
+          href="#capabilities"
+          data-cursor="View"
+          className="rounded-full bg-gradient-to-r from-swarm-core to-aurora-cyan px-8 py-3 font-body text-sm font-medium text-void transition-transform hover:scale-[1.03]"
         >
           See how it thinks
-        </MagneticButton>
-        <MagneticButton
+        </a>
+        <a
           href="#founder"
-          className="inline-block rounded-full border border-white/15 px-8 py-3 font-body text-sm font-medium text-white/80"
+          data-cursor="Go"
+          className="rounded-full border border-white/15 px-8 py-3 font-body text-sm font-medium text-white/80 transition-colors hover:border-swarm-core/60 hover:text-white"
         >
           Meet the architect
-        </MagneticButton>
+        </a>
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.6 }}
-        className="relative z-10 mt-16 flex flex-col items-center gap-2"
+        transition={{ duration: 1, delay: 2.1 }}
+        className="absolute bottom-10 left-0 z-10 flex w-full items-center justify-between px-6 sm:px-10"
       >
-        <span className="coord-label">Scroll to explore</span>
-        <div className="h-10 w-px bg-gradient-to-b from-swarm-core to-transparent" />
+        <span className="font-mono text-xs uppercase tracking-[0.2em] text-white/30">
+          Scroll
+        </span>
+        <span className="font-mono text-xs uppercase tracking-[0.2em] text-white/30">
+          N = 3 + 1 Swarm Nodes
+        </span>
       </motion.div>
-
-      <div className="absolute bottom-0 left-0 z-10 w-full -rotate-2 border-y border-white/5 bg-void/40 py-4 backdrop-blur-sm">
-        <Marquee items={["Fan-Out", "Orchestrate", "Judge", "Verify", "Scale"]} speed={22} />
-      </div>
     </section>
   );
 }
