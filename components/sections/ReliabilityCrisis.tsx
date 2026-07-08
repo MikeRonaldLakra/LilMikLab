@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import TiltCard from "@/components/TiltCard";
 
 const cards = [
   {
@@ -41,17 +42,19 @@ export default function ReliabilityCrisis() {
                 delay: i * 0.15,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="glass glass-hover rounded-2xl p-8"
+              className="rounded-2xl"
             >
-              <span className="module-band coord-label mb-6 inline-block">
-                {card.tag}
-              </span>
-              <h3 className="font-display text-2xl font-medium text-gradient-swarm sm:text-3xl">
-                {card.title}
-              </h3>
-              <p className="mt-4 text-base leading-relaxed text-white/60">
-                {card.body}
-              </p>
+              <TiltCard className="glass glass-hover h-full rounded-2xl p-8">
+                <span className="module-band coord-label mb-6 inline-block">
+                  {card.tag}
+                </span>
+                <h3 className="font-display text-2xl font-medium text-gradient-swarm sm:text-3xl">
+                  {card.title}
+                </h3>
+                <p className="mt-4 text-base leading-relaxed text-white/60">
+                  {card.body}
+                </p>
+              </TiltCard>
             </motion.div>
           ))}
         </div>
