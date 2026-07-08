@@ -60,8 +60,9 @@ button:focus-visible {
 }
 
 .glass-hover:hover {
-  border-color: rgba(139, 92, 246, 0.45);
-  box-shadow: 0 0 40px -8px rgba(139, 92, 246, 0.35);
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 50px -10px rgba(139, 92, 246, 0.4),
+    0 0 80px -20px rgba(34, 211, 238, 0.25);
   transform: translateY(-4px);
 }
 
@@ -74,7 +75,22 @@ button:focus-visible {
 }
 
 .text-gradient-swarm {
-  background: linear-gradient(180deg, #ffffff 0%, #cbb8ff 60%, #8b5cf6 100%);
+  background: linear-gradient(90deg, #b794ff 0%, #22d3ee 50%, #f472b6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Warmer alternate gradient used to vary the palette between sections */
+.text-gradient-warm {
+  background: linear-gradient(90deg, #fbbf24 0%, #f472b6 60%, #b794ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-cool {
+  background: linear-gradient(90deg, #60a5fa 0%, #22d3ee 50%, #a3e635 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -93,7 +109,7 @@ button:focus-visible {
 
 .scroll-progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #3f2e6b, #8b5cf6, #b794ff);
+  background: linear-gradient(90deg, #8b5cf6, #22d3ee, #f472b6, #fbbf24);
   transform-origin: left;
 }
 
@@ -126,4 +142,88 @@ button:focus-visible {
   border-radius: 999px;
   background: rgba(139, 92, 246, 0.18);
   border: 1px solid rgba(139, 92, 246, 0.35);
+}
+
+/* ---- Infinite marquee ---- */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-25%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee linear infinite;
+}
+
+/* ---- RGB-split glitch heading ---- */
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0;
+}
+
+.glitch-text::before {
+  color: #22d3ee;
+  -webkit-text-fill-color: #22d3ee;
+  background: none;
+  animation: glitch-flicker 6s steps(1) infinite;
+}
+
+.glitch-text::after {
+  color: #f472b6;
+  -webkit-text-fill-color: #f472b6;
+  background: none;
+  animation: glitch-flicker 6s steps(1) infinite reverse;
+}
+
+@keyframes glitch-flicker {
+  0%,
+  92%,
+  100% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  93% {
+    opacity: 0.7;
+    transform: translate(-3px, 1px);
+    clip-path: inset(10% 0 60% 0);
+  }
+  94% {
+    opacity: 0.5;
+    transform: translate(3px, -1px);
+    clip-path: inset(50% 0 20% 0);
+  }
+  95% {
+    opacity: 0.7;
+    transform: translate(-2px, 0);
+    clip-path: inset(30% 0 40% 0);
+  }
+  96% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .glitch-text::before,
+  .glitch-text::after {
+    animation: none !important;
+  }
 }
