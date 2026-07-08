@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --font-display: "Space Grotesk", sans-serif;
@@ -22,6 +20,13 @@ body {
   color: #ffffff;
   font-family: var(--font-body);
   overflow-x: hidden;
+}
+
+/* FIX: Hide default cursor on desktop because you have a Custom Cursor Component */
+@media (pointer: fine) {
+  body, a, button, [role="button"] {
+    cursor: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -113,28 +118,6 @@ button:focus-visible {
   transform-origin: left;
 }
 
-/* ---- Custom cursor (desktop only) ---- */
-.cursor-dot {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #b794ff;
-  box-shadow: 0 0 12px 2px rgba(139, 92, 246, 0.7);
-  pointer-events: none;
-  z-index: 200;
-  mix-blend-mode: difference;
-  will-change: transform;
-}
-
-@media (hover: none), (pointer: coarse) {
-  .cursor-dot {
-    display: none;
-  }
-}
-
 /* ---- Reusable module divider band ---- */
 .module-band {
   display: inline-block;
@@ -217,13 +200,5 @@ button:focus-visible {
   }
   96% {
     opacity: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-marquee,
-  .glitch-text::before,
-  .glitch-text::after {
-    animation: none !important;
   }
 }
