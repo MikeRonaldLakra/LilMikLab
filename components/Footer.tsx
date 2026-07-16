@@ -1,8 +1,7 @@
 "use client";
-
 import { motion } from "framer-motion";
 
-const nodes = ["Claude 3.5", "GPT-4o", "Gemini 1.5", "Judge Node"];
+const nodes = ["Claude", "ChatGpt", "Gemini", "DeepSeek", "NodeBeta"];
 
 export default function Footer() {
   return (
@@ -39,7 +38,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col items-start justify-between gap-4 font-mono text-xs uppercase tracking-widest text-white/30 sm:flex-row sm:items-center">
-          <span>NexusForge © {new Date().getFullYear()}</span>
+          <span>LilMik © {new Date().getFullYear()}</span>
           <span>Swarm AI Engine</span>
         </div>
       </div>
