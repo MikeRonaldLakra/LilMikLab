@@ -62,7 +62,7 @@ export default function JudgeNode() {
             Interactive Architecture
           </span>
           <h2 className="mb-6 font-display text-4xl font-medium tracking-tight sm:text-5xl">
-            The <span className="text-gradient-swarm">Judge Node</span>
+            The <span className="text-gradient-NodeBeta">Judge Node</span>
           </h2>
           <p className="mb-8 max-w-md font-body text-white/50">
             Click any node to see what it contributes to the final answer.
