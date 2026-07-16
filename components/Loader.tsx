@@ -42,16 +42,16 @@ export default function Loader() {
             className="flex flex-col items-center"
           >
             <span className="font-mono text-xs uppercase tracking-[0.3em] text-white/40">
-              NexusForge
+              LilMik
             </span>
-            <span className="mt-4 font-display text-6xl font-medium tabular-nums text-gradient-swarm sm:text-8xl">
+            <span className="mt-4 font-display text-6xl font-medium tabular-nums text-gradient-NodeBeta sm:text-8xl">
               {progress}
             </span>
           </motion.div>
 
           <div className="absolute bottom-12 h-px w-40 overflow-hidden bg-white/10">
             <motion.div
-              className="h-full bg-gradient-to-r from-swarm-core to-aurora-cyan"
+              className="h-full bg-gradient-to-r from-NodeBeta-core to-aurora-cyan"
               style={{ width: `${progress}%` }}
             />
           </div>
