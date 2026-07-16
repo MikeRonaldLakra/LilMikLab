@@ -11,8 +11,8 @@ const cards = [
   },
   {
     tag: "The Solution",
-    title: "Swarm Orchestration",
-    body: "NexusForge forces algorithmic democracy. By orchestrating parallel neural pathways, we treat disagreement as a signal and consensus as a mandate for factual truth.",
+    title: "NodeBeta Orchestration",
+    body: "LilMik forces algorithmic democracy. By orchestrating parallel neural pathways, we treat disagreement as a signal and consensus as a mandate for factual truth.",
   },
 ];
 
@@ -27,7 +27,7 @@ export default function ReliabilityCrisis() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16 font-display text-4xl font-medium tracking-tight sm:text-6xl"
         >
-          The <span className="text-gradient-swarm">Reliability Crisis</span>
+          The <span className="text-gradient-NodeBeta">Reliability Crisis</span>
         </motion.h2>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -48,7 +48,7 @@ export default function ReliabilityCrisis() {
                 <span className="module-band coord-label mb-6 inline-block">
                   {card.tag}
                 </span>
-                <h3 className="font-display text-2xl font-medium text-gradient-swarm sm:text-3xl">
+                <h3 className="font-display text-2xl font-medium text-gradient-NodeBeta sm:text-3xl">
                   {card.title}
                 </h3>
                 <p className="mt-4 text-base leading-relaxed text-white/60">
