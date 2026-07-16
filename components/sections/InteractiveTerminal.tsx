@@ -12,7 +12,7 @@ const checklist = [
   { label: "Response Ready", key: "ready" },
 ];
 
-const COMMAND = "start swarm";
+const COMMAND = "start NodeBeta";
 
 export default function InteractiveTerminal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -49,7 +49,7 @@ export default function InteractiveTerminal() {
             Live Execution
           </span>
           <h2 className="font-display text-4xl font-medium tracking-tight sm:text-5xl">
-            Watch a <span className="text-gradient-swarm">Swarm Run</span>
+            Watch a <span className="text-gradient-NodeBeta">NodeBeta Run</span>
           </h2>
         </div>
 
@@ -65,14 +65,14 @@ export default function InteractiveTerminal() {
             <span className="h-3 w-3 rounded-full bg-rose-500/70" />
             <span className="h-3 w-3 rounded-full bg-amber-400/70" />
             <span className="h-3 w-3 rounded-full bg-emerald-400/70" />
-            <span className="ml-3 font-mono text-xs text-white/30">swarm — zsh</span>
+            <span className="ml-3 font-mono text-xs text-white/30">NodeBeta — zsh</span>
           </div>
 
           <div className="min-h-[280px] p-6 font-mono text-sm leading-relaxed">
             <div className="flex text-white/80">
-              <span className="mr-2 text-swarm-bright">{">"}</span>
+              <span className="mr-2 text-NodeBeta-bright">{">"}</span>
               <span>{typed}</span>
-              <span className="ml-1 inline-block h-4 w-2 animate-pulse bg-swarm-bright" />
+              <span className="ml-1 inline-block h-4 w-2 animate-pulse bg-NodeBeta-bright" />
             </div>
 
             <div className="mt-4 flex flex-col gap-2">
