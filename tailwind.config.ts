@@ -10,7 +10,7 @@ const config: Config = {
           raised: "#0A0A0D",
           line: "#161619",
         },
-        swarm: {
+        NodeBeta: {
           core: "#8B5CF6",
           bright: "#B794FF",
           dim: "#3F2E6B",
