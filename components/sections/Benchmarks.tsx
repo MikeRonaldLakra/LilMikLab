@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import AnimatedCounter from "@/components/AnimatedCounter";
 
 const rows = [
-  { label: "NexusForge Swarm", value: 98, display: "98% Consensus Accuracy", hero: true },
+  { label: "LilMik NodeBeta", value: 98, display: "98% Consensus Accuracy", hero: true },
   { label: "GPT-4o (Monolithic)", value: 82, display: "82% Accuracy", hero: false },
   { label: "Claude 3.5 (Monolithic)", value: 85, display: "85% Accuracy", hero: false },
 ];
@@ -20,14 +20,14 @@ export default function Benchmarks() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16 font-display text-4xl font-medium tracking-tight sm:text-6xl"
         >
-          Factual Integrity <span className="text-gradient-swarm">Benchmarks</span>
+          Factual Integrity <span className="text-gradient-nodebeta">Benchmarks</span>
         </motion.h2>
 
         <div className="mb-16 flex items-end gap-4">
           <AnimatedCounter
             value={98}
             suffix="%"
-            className="font-display text-7xl font-bold text-gradient-swarm sm:text-9xl"
+            className="font-display text-7xl font-bold text-gradient-nodebeta sm:text-9xl"
           />
           <span className="mb-3 font-body text-lg text-white/50">
             consensus accuracy vs single-model baselines
@@ -50,7 +50,7 @@ export default function Benchmarks() {
                   }}
                   className={`flex h-full items-center justify-end rounded-full px-5 ${
                     row.hero
-                      ? "bg-gradient-to-r from-swarm-dim via-swarm-core to-aurora-cyan"
+                      ? "bg-gradient-to-r from-nodebeta-dim via-nodebeta-core to-aurora-cyan"
                       : "bg-slate-700/70"
                   }`}
                 >
@@ -71,7 +71,7 @@ export default function Benchmarks() {
           className="mt-10 text-center font-body text-sm italic text-white/40"
         >
           Benchmarks based on modified DRACO (Deep Research Accuracy, Completeness,
-          and Objectivity) metrics. Swarm architecture outperforms single-model
+          and Objectivity) metrics. NodeBeta architecture outperforms single-model
           baselines by ~13.8%.
         </motion.p>
       </div>
