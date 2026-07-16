@@ -17,7 +17,7 @@ export default function Nav() {
     <>
       <header className="fixed left-0 top-0 z-50 flex w-full items-center justify-between px-6 py-6 sm:px-10">
         <a href="#" data-cursor="Top" className="font-display text-sm font-bold uppercase tracking-widest">
-          NexusForge
+          LilMik
           <span className="text-swarm-bright">.</span>
         </a>
 
