@@ -45,7 +45,7 @@ export default function Hero() {
           <motion.span
             key={i}
             variants={char}
-            className={`inline-block ${c === " " ? "w-3 sm:w-5" : "text-gradient-swarm"}`}
+            className={`inline-block ${c === " " ? "w-3 sm:w-5" : "text-gradient-NodeBeta"}`}
           >
             {c === " " ? "\u00A0" : c}
           </motion.span>
@@ -58,7 +58,7 @@ export default function Hero() {
         transition={{ duration: 0.8, delay: 1.6, ease: [0.16, 1, 0.3, 1] }}
         className="relative z-10 mt-10 max-w-xl text-balance font-body text-lg text-white/60"
       >
-        NexusForge — Swarm AI Engine
+        LilMik — NodeBeta AI Engine
       </motion.p>
 
       <motion.div
@@ -70,14 +70,14 @@ export default function Hero() {
         <a
           href="#capabilities"
           data-cursor="View"
-          className="rounded-full bg-gradient-to-r from-swarm-core to-aurora-cyan px-8 py-3 font-body text-sm font-medium text-void transition-transform hover:scale-[1.03]"
+          className="rounded-full bg-gradient-to-r from-NodeBeta-core to-aurora-cyan px-8 py-3 font-body text-sm font-medium text-void transition-transform hover:scale-[1.03]"
         >
           See how it thinks
         </a>
         <a
           href="#founder"
           data-cursor="Go"
-          className="rounded-full border border-white/15 px-8 py-3 font-body text-sm font-medium text-white/80 transition-colors hover:border-swarm-core/60 hover:text-white"
+          className="rounded-full border border-white/15 px-8 py-3 font-body text-sm font-medium text-white/80 transition-colors hover:border-NodeBeta-core/60 hover:text-white"
         >
           Meet the architect
         </a>
@@ -93,7 +93,7 @@ export default function Hero() {
           Scroll
         </span>
         <span className="font-mono text-xs uppercase tracking-[0.2em] text-white/30">
-          N = 3 + 1 Swarm Nodes
+          N = 3 + 1 NodeBeta Nodes
         </span>
       </motion.div>
     </section>
