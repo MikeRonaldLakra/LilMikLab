@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 type Cell = { type: "icon"; value: "check" | "dash" | "x" } | { type: "text"; value: string };
 
-const columns = ["Capability", "Standard LLM", "Agentic Wrapper", "NexusForge Swarm"];
+const columns = ["Capability", "Standard LLM", "Agentic Wrapper", "LilMik NodeBeta"];
 
 const rows: { label: string; cells: Cell[] }[] = [
   {
@@ -52,7 +52,7 @@ export default function ComparisonTable() {
     <section className="relative px-6 py-32 sm:py-40">
       <div className="mx-auto max-w-5xl">
         <h2 className="mb-16 font-display text-4xl font-medium tracking-tight sm:text-5xl">
-          Competitive Strategic <span className="text-gradient-swarm">Advantage</span>
+          Competitive Strategic <span className="text-gradient-nodebeta">Advantage</span>
         </h2>
 
         <motion.div
@@ -69,7 +69,7 @@ export default function ComparisonTable() {
                   <th
                     key={col}
                     className={`p-5 font-display text-sm font-medium tracking-tight ${
-                      i === columns.length - 1 ? "text-swarm-bright" : "text-white/70"
+                      i === columns.length - 1 ? "text-nodebeta-bright" : "text-white/70"
                     }`}
                   >
                     {col}
