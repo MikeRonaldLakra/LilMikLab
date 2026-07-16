@@ -90,7 +90,7 @@ export default function CapabilitiesList() {
           Featured Capabilities
         </span>
         <h2 className="font-display text-3xl font-medium tracking-tight sm:text-5xl">
-          The Swarm Intelligence <span className="text-gradient-swarm">Pipeline</span>
+          The NodeBeta Intelligence <span className="text-gradient-nodebeta">Pipeline</span>
         </h2>
       </div>
 
