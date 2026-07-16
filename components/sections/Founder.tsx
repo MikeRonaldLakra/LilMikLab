@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 const timeline = [
   { year: "Phase 0", label: "Blueprint" },
   { year: "Phase 1", label: "Backend Architecture" },
-  { year: "Phase 2", label: "Swarm Orchestration" },
+  { year: "Phase 2", label: "NodeBeta Orchestration" },
   { year: "Phase 3", label: "Production Deployment" },
 ];
 
 const bio =
-  "From architectural blueprint to production-grade deployment, Mike engineered NexusForge to solve the inherent flaws of monolithic intelligence.";
+  "From architectural blueprint to production-grade deployment, Mike engineered LilMik to solve the inherent flaws of monolithic intelligence.";
 
 export default function Founder() {
   return (
@@ -31,7 +31,7 @@ export default function Founder() {
           <motion.div
             animate={{ opacity: [0.4, 0.7, 0.4], scale: [1, 1.15, 1] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-1/3 left-1/2 h-2/3 w-2/3 -translate-x-1/2 rounded-full bg-swarm-core/40 blur-[80px]"
+            className="absolute -top-1/3 left-1/2 h-2/3 w-2/3 -translate-x-1/2 rounded-full bg-nodebeta-core/40 blur-[80px]"
           />
           <motion.div
             animate={{ opacity: [0.3, 0.55, 0.3] }}
@@ -44,11 +44,11 @@ export default function Founder() {
             MRL
           </span>
 
-          {/* Floating swarm particles inside the frame */}
+          {/* Floating NodeBeta particles inside the frame */}
           {[...Array(6)].map((_, i) => (
             <motion.span
               key={i}
-              className="absolute h-1.5 w-1.5 rounded-full bg-swarm-bright"
+              className="absolute h-1.5 w-1.5 rounded-full bg-NodeBeta-bright"
               style={{ left: `${15 + i * 14}%`, top: `${20 + (i % 3) * 25}%` }}
               animate={{ opacity: [0.2, 0.9, 0.2], y: [0, -10, 0] }}
               transition={{
@@ -134,7 +134,7 @@ export default function Founder() {
                 transition={{ duration: 0.5, delay: i * 0.12 }}
                 className="relative"
               >
-                <span className="absolute -left-[29px] top-1.5 h-2 w-2 rounded-full bg-swarm-bright" />
+                <span className="absolute -left-[29px] top-1.5 h-2 w-2 rounded-full bg-NodeBeta-bright" />
                 <span className="font-mono text-xs uppercase tracking-widest text-white/30">
                   {item.year}
                 </span>
