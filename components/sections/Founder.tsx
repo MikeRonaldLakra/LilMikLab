@@ -39,10 +39,13 @@ export default function Founder() {
             className="absolute bottom-0 right-0 h-1/2 w-1/2 rounded-full bg-aurora-cyan/30 blur-[70px]"
           />
 
-          {/* Monogram in place of a photo */}
-          <span className="relative z-10 font-display text-8xl font-bold text-white/90">
-            MRL
-          </span>
+         
+         {/* Replaced Monogram with Photo */}
+<img 
+  src="Screenshot 2026-07-17 055621.png" /* Replace with your actual image file path */
+  alt="Mike Ronald Lakra" 
+  className="relative z-10 h-full w-full object-cover" 
+/>
 
           {/* Floating NodeBeta particles inside the frame */}
           {[...Array(6)].map((_, i) => (
