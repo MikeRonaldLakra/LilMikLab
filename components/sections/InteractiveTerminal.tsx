@@ -4,10 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 
 const checklist = [
-  { label: "GPT-4o", key: "gpt" },
-  { label: "Claude 3.5", key: "claude" },
-  { label: "Gemini 1.5", key: "gemini" },
-  { label: "Judge Node", key: "judge" },
+  { label: "ChatGPT", key: "gpt" },
+  { label: "Claude", key: "claude" },
+  { label: "Gemini", key: "gemini" },
+  { label: "DeepSeek", key: "deepseek" },
+  { label: "Nvidia", key: "nvidia" },
+  { label: "NodeBeta", key: "judge" },
   { label: "Consensus", key: "consensus" },
   { label: "Response Ready", key: "ready" },
 ];
