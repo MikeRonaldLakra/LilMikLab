@@ -2,12 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-/**
- * Any element with data-cursor="LABEL" will expand the cursor into a pill
- * showing that label while hovered. This is the signature Active Theory
- * interaction pattern — the cursor itself becomes contextual UI rather than
- * a static dot.
- */
+
 export default function CursorTag() {
   const wrapRef = useRef<HTMLDivElement>(null);
   const [label, setLabel] = useState<string | null>(null);
