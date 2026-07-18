@@ -1,8 +1,3 @@
-/**
- * Radial vignette that darkens the edges of the viewport — the single
- * biggest lever for a "too light / washed out" cinematic look. Sits above
- * the aurora blobs but below content.
- */
 export default function Vignette() {
   return (
     <div
