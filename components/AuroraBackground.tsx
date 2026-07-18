@@ -8,7 +8,6 @@ import * as THREE from "three";
 function ParticleNodeBeta() {
   const ref = useRef<THREE.Points>(null);
   
-  // 5000 3D particles generate kar rahe hain jo "NodeBeta Nodes" ko represent karte hain
   const positions = useMemo(() => {
     const positions = new Float32Array(5000 * 3);
     for (let i = 0; i < 5000; i++) {
@@ -52,7 +51,7 @@ export default function Background() {
       <Canvas camera={{ position: [0, 0, 15], fov: 60 }}>
         <ParticleNodeBeta />
       </Canvas>
-      {/* Dogstudio style cinematic vignette (kinaro par andhera) */}
+      {/* my unique style cinematic */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#040306_100%)] opacity-80" />
     </div>
   );
