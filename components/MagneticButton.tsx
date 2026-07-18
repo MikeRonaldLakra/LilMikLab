@@ -3,11 +3,7 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-/**
- * Button that physically pulls toward the cursor within its bounds and
- * springs back on leave — a tactile, "heavy" hover moment rather than a
- * flat color-change hover.
- */
+
 export default function MagneticButton({
   children,
   href,
