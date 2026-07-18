@@ -42,7 +42,6 @@ button:focus-visible {
   border-radius: 4px;
 }
 
-/* ---- Glassmorphism primitive ---- */
 .glass {
   background: linear-gradient(
     160deg,
@@ -81,7 +80,6 @@ button:focus-visible {
   color: transparent;
 }
 
-/* Warmer alternate gradient used to vary the palette between sections */
 .text-gradient-warm {
   background: linear-gradient(90deg, #fbbf24 0%, #f472b6 60%, #b794ff 100%);
   -webkit-background-clip: text;
@@ -96,7 +94,6 @@ button:focus-visible {
   color: transparent;
 }
 
-/* ---- Cinematic top scroll-progress bar ---- */
 .scroll-progress-track {
   position: fixed;
   top: 0;
@@ -113,8 +110,6 @@ button:focus-visible {
   transform-origin: left;
 }
 
-/* ---- Section label — flat hairline style, not a rounded pill.
-   Every section using .module-band updates automatically. ---- */
 .module-band {
   display: inline-flex;
   align-items: center;
@@ -133,7 +128,6 @@ button:focus-visible {
   background: #b794ff;
 }
 
-/* Cursor-none on desktop so the custom CursorTag fully takes over */
 @media (hover: hover) and (pointer: fine) {
   body {
     cursor: none;
