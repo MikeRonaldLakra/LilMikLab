@@ -25,7 +25,7 @@ import Founder from "@/components/sections/Founder";
 import FinalCTA from "@/components/sections/FinalCTA";
 
 // The R3F canvas touches window/WebGL — keep it out of the server bundle.
-const SwarmCanvas = dynamic(() => import("@/components/SwarmCanvas"), {
+const NodeBetaCanvas = dynamic(() => import("@/components/NodeBetaCanvas"), {
   ssr: false,
 });
 
@@ -39,8 +39,8 @@ export default function Home() {
       <CursorTag />
       <Nav />
 
-      {/* Persistent 3D swarm background, visible through the whole scroll */}
-      <SwarmCanvas fixed />
+      {/* Persistent 3D NodeBeta background, visible through the whole scroll */}
+      <NodeBetaCanvas fixed />
       <Vignette />
 
       <div className="relative">
